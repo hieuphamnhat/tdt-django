@@ -50,3 +50,7 @@ def companyUpdate(request, pk):
 def companyDelete(request, pk):
     company = Company.objects.get(id = pk).delete()
     return JsonResponse({'message': '{} Company were deleted successfully!'.format(company[0])}, status=status.HTTP_204_NO_CONTENT)
+
+def view_company(request):
+    companies = Company.objects.all()
+    return render(request, 'company/list-company.html', {'companies': companies})
